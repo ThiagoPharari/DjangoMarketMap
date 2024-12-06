@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú de Usuarios</title>
+</head>
+<body>
+    <h1>Usuarios Activos</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th>DNI</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+        {% for usuario in usuarios %}
+        <tr>
+            <td>{{ usuario.id }}</td>
+            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.apellido }}</td>
+            <td>{{ usuario.correo }}</td>
+            <td>{{ usuario.dni }}</td>
+            <td>{{ usuario.estado }}</td>
+            <td>
+                <a href="{% url 'editar_usuario' usuario.id %}">Editar</a> |
+                <a href="{% url 'eliminar_usuario' usuario.id %}">Eliminar</a> |
+                <a href="{% url 'banear_usuario' usuario.id %}">Banear</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'menu_productos' %}">Ir a Productos</a>
+</body>
+</html>
